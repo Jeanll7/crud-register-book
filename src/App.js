@@ -37,6 +37,11 @@ function App() {
     return date.toLocaleDateString("pt-BR", options);
   };
 
+  const formatTime = (time) => {
+    const options = { hour: "2-digit", minute: "2-digit" };
+    return time.toLocaleTimeString("pt-BR", options);
+  };
+
   return (
     <>
       <GlobalStyle />
