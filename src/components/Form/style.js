@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormBook = styled.form`
+export const SaleForm = styled.form`
   width: 100%;
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@ export const FormBook = styled.form`
   }
 `;
 
-export const InputInfo = styled.input`
+export const InputInfoSale = styled.input`
   width: 120px;
   height: 30px;
   padding-left: 4px;

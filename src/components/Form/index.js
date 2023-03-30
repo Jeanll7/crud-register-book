@@ -1,38 +1,36 @@
-import { FormBook, InputInfo, ButtonSubmit } from "./style";
+import { SaleForm, InputInfoSale, ButtonSubmit } from "./style";
 
 function Form(props) {
   const {
     editingId,
     handleSaveEdit,
     handleSubmit,
-    bookName,
+    book,
     author,
     price,
-    setPrice,
+    setBook,
     setAuthor,
-    setBookName,
+    setPrice,
   } = props;
 
   return (
-    <FormBook onSubmit={editingId !== null ? handleSaveEdit : handleSubmit}>
-      {" "}
+    <SaleForm onSubmit={editingId !== null ? handleSaveEdit : handleSubmit}>
       {editingId !== null ? (
         <>
-          <InputInfo
+          <InputInfoSale
             style={{ borderBottom: "solid 2px #0CC0DF" }}
-            value={bookName}
-            placeholder="Nome do Livro"
-            type="name"
-            onChange={(e) => setBookName(e.target.value)}
+            placeholder="Livro"
+            value={book}
+            onChange={(e) => setBook(e.target.value)}
           />
-          <InputInfo
+          <InputInfoSale
             style={{ borderBottom: "solid 2px #0CC0DF" }}
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="Autor"
             type="name"
           />
-          <InputInfo
+          <InputInfoSale
             style={{ borderBottom: "solid 2px #0CC0DF" }}
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -40,24 +38,24 @@ function Form(props) {
             type="number"
             min="1"
           />
-          <ButtonSubmit style={{ backgroundColor: "#0CC0Df" }} type="submit">
+          <ButtonSubmit style={{ backgroundColor: "#0CC0DF" }} type="submit">
             Salvar
           </ButtonSubmit>
         </>
       ) : (
         <>
-          <InputInfo
-            placeholder="Nome do Livro"
-            value={bookName}
-            onChange={(e) => setBookName(e.target.value)}
+          <InputInfoSale
+            placeholder="Livro"
+            value={book}
+            onChange={(e) => setBook(e.target.value)}
           />
-          <InputInfo
+          <InputInfoSale
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="Autor"
             type="name"
           />
-          <InputInfo
+          <InputInfoSale
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder="R$ 0,00"
@@ -67,7 +65,7 @@ function Form(props) {
           <ButtonSubmit type="submit">Confirmar</ButtonSubmit>
         </>
       )}
-    </FormBook>
+    </SaleForm>
   );
 }
 

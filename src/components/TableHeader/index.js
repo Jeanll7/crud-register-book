@@ -1,8 +1,8 @@
-import { HeaderInfo, GridItemTitle } from "./style.js";
+import { TableHeader, GridItemTitle } from "./style.js";
 
-function TableHeader() {
+export default function TableHeaderInfo() {
   return (
-    <HeaderInfo>
+    <TableHeader>
       <GridItemTitle>ID</GridItemTitle>
       <GridItemTitle>Livro</GridItemTitle>
       <GridItemTitle>Autor</GridItemTitle>
@@ -11,8 +11,6 @@ function TableHeader() {
       <GridItemTitle>Horário</GridItemTitle>
       <GridItemTitle>Editar</GridItemTitle>
       <GridItemTitle>Excluir</GridItemTitle>
-    </HeaderInfo>
+    </TableHeader>
   );
 }
-
-export default TableHeader;

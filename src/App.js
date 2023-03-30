@@ -3,13 +3,13 @@ import "./GlobalStyles";
 import { Container, GlobalStyle } from "./GlobalStyles";
 import Form from "./components/Form";
 import Table from "./components/Table";
-import Error from "./components/ErrorMessage";
+import Error from "./components/ErroMessage";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [bookName, setBookName] = useState("");
+  const [book, setBook] = useState("");
   const [author, setAuthor] = useState("");
   const [price, setPrice] = useState("");
   const [sale, setSale] = useState([]);
@@ -23,7 +23,7 @@ function App() {
     }
   }, [sale]);
 
-  // Recupera livros salvos no Local Storage ao carregar
+  //  salvas no Local Storage ao carregar o componente
   useEffect(() => {
     const savedSale = localStorage.getItem("sale");
     if (savedSale) {
@@ -48,14 +48,14 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!bookName || !author || !price) {
+    if (!book || !author || !price) {
       setIsFieldCompleted(false);
       return;
     }
     const now = new Date();
     const newSale = {
       id: generateId(),
-      bookName,
+      book,
       author,
       price: parseFloat(price).toLocaleString("pt-BR", {
         style: "currency",
@@ -67,25 +67,25 @@ function App() {
     };
 
     setSale([...sale, newSale]);
-    setBookName("");
+    setBook("");
     setAuthor("");
     setPrice("");
     setIsFieldCompleted(true);
-    toast.success("Livro adicionado com sucesso!");
+    toast.success("Livro adicionada com sucesso!");
   };
 
   const handleEdit = (id) => {
     console.log("uhuu");
     const saleToEdit = sale.find((sale) => sale.id === id);
-    setBookName(saleToEdit.bookName);
-    setAuthor(saleToEdit.author);
+    setBook(saleToEdit.employee);
+    setAuthor(saleToEdit.product);
     setPrice(saleToEdit.originalPrice);
     setEditingId(id);
     setSelectedSaleId(id);
   };
 
   const handleCancelEdit = () => {
-    setBookName("");
+    setBook("");
     setAuthor("");
     setPrice("");
     setEditingId(null);
@@ -93,14 +93,14 @@ function App() {
 
   const handleSaveEdit = (e) => {
     e.preventDefault();
-    if (!bookName || !author || !price) {
+    if (!book || !author || !price) {
       setIsFieldCompleted(false);
       return;
     }
     const now = new Date();
     const editedSale = {
       id: editingId,
-      bookName,
+      book,
       author,
       price: parseFloat(price).toLocaleString("pt-BR", {
         style: "currency",
@@ -114,7 +114,7 @@ function App() {
       sale.id === editingId ? editedSale : sale
     );
     setSale(newSales);
-    setBookName("");
+    setBook("");
     setAuthor("");
     setPrice("");
     setEditingId(null);
@@ -134,17 +134,17 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ToastContainer pouseOnHover={false} autoClose={1000} />
+      <ToastContainer pauseOnHover={false} autoClose={1000} />
       <Container>
         <Form
-          editingI={editingId}
+          editingId={editingId}
           handleSaveEdit={handleSaveEdit}
           handleSubmit={handleSubmit}
           handleCancelEdit={handleCancelEdit}
-          employee={bookName}
+          book={book}
           author={author}
           price={price}
-          setBookName={setBookName}
+          setBook={setBook}
           setAuthor={setAuthor}
           setPrice={setPrice}
         />

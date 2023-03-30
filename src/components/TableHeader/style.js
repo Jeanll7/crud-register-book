@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderInfo = styled.thead`
+export const TableHeader = styled.thead`
   width: 100%;
   @media (max-width: 830px) {
     display: none;

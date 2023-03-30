@@ -1,5 +1,5 @@
 import React from "react";
-import TableHeader from "../TableHeader";
+import TableHeaderSale from "../TableHeader";
 import {
   Tr,
   GridItem,
@@ -25,12 +25,12 @@ export default function Table(props) {
 
   return (
     <SalesTable>
-      <TableHeader />
+      <TableHeaderSale />
       <TableBody>
         {sale.map((sale) => (
           <Tr key={sale.id}>
             <GridItem data-label="ID">{sale.id}</GridItem>
-            <GridItem data-label="Nome do livro">{sale.bookName}</GridItem>
+            <GridItem data-label="Livro">{sale.book}</GridItem>
             <GridItem data-label="Autor">{sale.author}</GridItem>
             <GridItem data-label="Preço">{sale.price}</GridItem>
             <GridItem data-label="Data">{sale.date}</GridItem>
