@@ -23,8 +23,8 @@ function App() {
     }
   }, [sale]);
 
-  // recuperar livro salvo no local Storage ao carregar o componente
-  useState(() => {
+  // Recupera livros salvos no Local Storage ao carregar
+  useEffect(() => {
     const savedSale = localStorage.getItem("sale");
     if (savedSale) {
       setSale(JSON.parse(savedSale));
@@ -32,12 +32,12 @@ function App() {
   }, []);
 
   const generateId = () => {
-    const randomNumber = Math.floor(Math.random() * 100);
+    const randomNumber = Math.floor(Math.random() * 1000);
     return `#${randomNumber.toString().padStart(3, "0")}`;
   };
 
   const formatDate = (date) => {
-    const options = { day: "2-digt", month: "2-digt", year: "numeric" };
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
     return date.toLocaleDateString("pt-BR", options);
   };
 
@@ -75,7 +75,7 @@ function App() {
   };
 
   const handleEdit = (id) => {
-    console.log("test");
+    console.log("uhuu");
     const saleToEdit = sale.find((sale) => sale.id === id);
     setBookName(saleToEdit.bookName);
     setAuthor(saleToEdit.author);
@@ -119,7 +119,8 @@ function App() {
     setPrice("");
     setEditingId(null);
     setIsFieldCompleted(true);
-    toast("Atualizado com sucesso!");
+
+    toast("Livro atualizado com sucesso!");
   };
 
   const handleDelete = (id) => {
