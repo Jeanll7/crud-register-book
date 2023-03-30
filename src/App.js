@@ -23,7 +23,7 @@ function App() {
     }
   }, [sale]);
 
-  //  salvas no Local Storage ao carregar o componente
+  //  salvar no Local Storage
   useEffect(() => {
     const savedSale = localStorage.getItem("sale");
     if (savedSale) {
