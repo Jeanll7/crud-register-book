@@ -18,27 +18,33 @@ function Form(props) {
       {editingId !== null ? (
         <>
           <InputInfoSale
-            style={{ borderBottom: "solid 2px #0CC0DF" }}
-            placeholder="Livro"
+            style={{ borderBottom: "solid 2px #00b4d8" }}
+            placeholder="Editar Livro"
             value={book}
             onChange={(e) => setBook(e.target.value)}
           />
           <InputInfoSale
-            style={{ borderBottom: "solid 2px #0CC0DF" }}
+            style={{ borderBottom: "solid 2px #00b4d8" }}
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            placeholder="Autor"
+            placeholder="Editar Autor"
             type="name"
           />
           <InputInfoSale
-            style={{ borderBottom: "solid 2px #0CC0DF" }}
+            style={{ borderBottom: "solid 2px #00b4d8" }}
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder="R$ 0,00"
             type="number"
             min="1"
           />
-          <ButtonSubmit style={{ backgroundColor: "#0CC0DF" }} type="submit">
+          <ButtonSubmit
+            style={{
+              backgroundColor: "#00b4d8",
+              border: "solid 1px #004cd8b3",
+            }}
+            type="submit"
+          >
             Salvar
           </ButtonSubmit>
         </>

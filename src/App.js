@@ -75,10 +75,10 @@ function App() {
   };
 
   const handleEdit = (id) => {
-    console.log("uhuu");
+    console.log("teste");
     const saleToEdit = sale.find((sale) => sale.id === id);
-    setBook(saleToEdit.employee);
-    setAuthor(saleToEdit.product);
+    setBook(saleToEdit.book);
+    setAuthor(saleToEdit.author);
     setPrice(saleToEdit.originalPrice);
     setEditingId(id);
     setSelectedSaleId(id);

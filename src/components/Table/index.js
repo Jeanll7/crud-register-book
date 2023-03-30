@@ -1,5 +1,5 @@
 import React from "react";
-import TableHeaderSale from "../TableHeader";
+import TableHeader from "../TableHeader";
 import {
   Tr,
   GridItem,
@@ -25,7 +25,7 @@ export default function Table(props) {
 
   return (
     <SalesTable>
-      <TableHeaderSale />
+      <TableHeader />
       <TableBody>
         {sale.map((sale) => (
           <Tr key={sale.id}>
