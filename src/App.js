@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./GlobalStyles";
 import { Container, GlobalStyle } from "./GlobalStyles";
 import Form from "./components/Form";
@@ -6,6 +6,36 @@ import Table from "./components/Table";
 
 function App() {
   const [bookName, setBookName] = useState("");
+  const [author, setAuthor] = useState("");
+  const [price, setPrice] = useState("");
+  const [sale, setSale] = useState([]);
+  const [isFieldCompleted, setIsFieldCompleted] = useState(true);
+  const [editingId, setEditingId] = useState(null);
+  const [selectedSaleId, setSelectedSaleId] = useState(null);
+
+  useEffect(() => {
+    if (sale.length > 0) {
+      localStorage.setItem("sale", JSON.stringify(sale));
+    }
+  }, [sale]);
+
+  // recuperar livro salvo no local Storage ao carregar o componente
+  useState(() => {
+    const savedSale = localStorage.getItem("sale");
+    if (savedSale) {
+      setSale(JSON.parse(savedSale));
+    }
+  }, []);
+
+  const generateId = () => {
+    const randomNumber = Math.floor(Math.random() * 100);
+    return `#${randomNumber.toString().padStart(3, "0")}`;
+  };
+
+  const formatDate = (date) => {
+    const options = { day: "2-digt", month: "2-digt", year: "numeric" };
+    return date.toLocaleDateString("pt-BR", options);
+  };
 
   return (
     <>
@@ -13,7 +43,7 @@ function App() {
       {/* <ToatContainer pouseOnHover={false} autoClose={1000} /> */}
       <Container>
         <Form
-          editingI={editingI}
+          editingI={editingId}
           handleSaveEdit={handleSaveEdit}
           handleSubmit={handleSubmit}
           handleCancelEdit={handleCancelEdit}
